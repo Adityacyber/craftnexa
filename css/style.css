@@ -9606,6 +9606,7 @@ h5,
   -ms-border-radius: 30px;
   border-radius: 30px;
   background-color: #ffc000;
+  max-width: 145px;
 }
 .ftco-navbar-light .navbar-nav > .nav-item.cta > a:hover {
   background: none;
@@ -9772,7 +9773,7 @@ h5,
   color: #fff;
 }
 .slider-text h1 {
-  font-size: 55px;
+  font-size: 50px;
   color: #fff;
   line-height: 1.2;
   font-weight: 200;
@@ -9780,6 +9781,12 @@ h5,
 @media (max-width: 991.98px) {
   .slider-text h1 {
     font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-text h1 {
+    font-size: 32px;
   }
 }
 .slider-text h1 strong {
@@ -9979,8 +9986,10 @@ h5,
 }
 .ftco-section-featured .heading-section h2 strong {
   font-weight: 700;
-  color: #efac78;
-  background: #fdf2ea;
+  color: #ffc000;
+  border-radius: 5px;
+  padding: 6px 12px;
+  background: #000000;
 }
 .ftco-section-featured.ftco-section-featured-2 {
   margin-top: 0 !important;
@@ -10244,14 +10253,14 @@ h5,
 .block-3 .text,
 .block-3 .image {
   width: 100%;
-  padding: 10% 7%;
+  padding: 9% 7%;
   display: block;
 }
 @media (min-width: 768px) {
   .block-3 .text,
   .block-3 .image {
     width: 50%;
-    padding: 10% 7%;
+    padding: 9% 7%;
   }
 }
 
@@ -10624,8 +10633,17 @@ textarea.form-control {
 .ftco-footer {
   font-size: 16px;
   background: #000;
-  padding: 12em 0 8em 0;
+  padding: 12em 0 8em 8em;
 }
+
+@media (max-width: 480px) {
+  .ftco-footer {
+    font-size: 16px;
+  background: #000;
+  padding: 6em 0 8em 0;
+  }
+}
+
 .ftco-footer .ftco-footer-logo {
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -10805,7 +10823,7 @@ textarea.form-control {
 }
 
 .heading-section.heading-section-white h2 {
-  font-size: 40px;
+  font-size: 54px;
   color: #fff;
   font-weight: 700;
 }
@@ -11579,19 +11597,19 @@ textarea.form-control {
 }
 .subscribe-form .form-group input::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0) !important;
 }
 .subscribe-form .form-group input::-moz-placeholder {
   /* Firefox 19+ */
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0) !important;
 }
 .subscribe-form .form-group input:-ms-input-placeholder {
   /* IE 10+ */
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0) !important;
 }
 .subscribe-form .form-group input:-moz-placeholder {
   /* Firefox 18- */
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0) !important;
 }
 
 .subscribe-form .icon {
@@ -11757,4 +11775,125 @@ textarea.form-control {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px;
   }
+}
+
+/* Portfolio */
+
+.cards {
+	list-style: none;
+	white-space: nowrap;
+  min-height: calc(20rem * 2.5);
+  scroll-snap-type: x mandatory;
+	max-width: calc(15rem * 6);
+	overflow: overlay;
+  margin: 0 auto;
+  padding: calc(15rem / 3 * 2) 0;
+  position: relative;
+  max-width: 100vw;
+  background: #111;
+  z-index: 1;
+/*   height: 100vh; */
+}
+
+.cards li {
+	display: inline-block;
+	width: 20rem;
+  height: 15rem;
+/* 	aspect-ratio: 1; */
+  scroll-snap-align: center;
+  /* Track this element as it intersects the scrollport */
+	view-timeline-name: --li-in-and-out-of-view;
+	view-timeline-axis: inline;
+  /* Link an animation to the established view-timeline and have it run during the contain phase */
+	animation: linear adjust-z-index both;
+	animation-timeline: --li-in-and-out-of-view;
+
+	/* Make the 3D stuff work… */
+	perspective: 60em;
+  position: relative;
+  z-index: 1;
+  will-change: z-index;
+  user-select: none;
+}
+
+.cards li:first-of-type {
+  margin-left: calc(50% - (15rem / 2));
+}
+
+.cards li:last-of-type {
+  margin-right: calc(50% - (15rem / 2));
+}
+
+.cards li img {
+	width: 100%;
+	height: auto;
+
+	-webkit-box-reflect: below 0.5em linear-gradient(rgb(0 0 0 / 0), rgb(0 0 0 / 0.25));
+}
+
+.cards li > img {
+	/* Link an animation to the established view-timeline (of the parent li) and have it run during the contain phase */
+	animation: linear rotate-cover both;
+	animation-timeline: --li-in-and-out-of-view;
+  transform: translateX(-100%) rotateY(-45deg);
+  will-change: transform;
+}
+
+.cards li video {
+	width: 100%;
+	height: auto;
+
+	-webkit-box-reflect: below 0.5em linear-gradient(rgb(0 0 0 / 0), rgb(0 0 0 / 0.25));
+}
+
+.cards li > video {
+	/* Link an animation to the established view-timeline (of the parent li) and have it run during the contain phase */
+	animation: linear rotate-cover both;
+	animation-timeline: --li-in-and-out-of-view;
+  transform: translateX(-100%) rotateY(-45deg);
+  will-change: transform;
+}
+
+.service-h1 {
+  font-weight: 600;
+}
+
+.service-content {
+  margin: 0 200px;
+}
+
+.service-list, .service-p {
+  font-size: 21px;
+  line-height: 1.5em;
+
+}
+
+@keyframes adjust-z-index {
+	0% {
+		z-index: 1;
+	}
+	50% {
+		z-index: 100; /* When at the center, be on top */
+	}
+	100% {
+		z-index: 1;
+	}
+}
+
+@keyframes rotate-cover {
+	0% {
+		transform: translateX(-100%) rotateY(-45deg);
+	}
+	35% {
+		transform: translateX(0) rotateY(-45deg);
+	}
+	50% {
+		transform: rotateY(0deg) translateZ(1em) scale(1.5);
+	}
+	65% {
+		transform: translateX(0) rotateY(45deg);
+	}
+	100% {
+		transform: translateX(100%) rotateY(45deg);
+	}
 }
